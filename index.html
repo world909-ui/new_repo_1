@@ -1,17 +1,61 @@
 <!DOCTYPE html>
-<html lang="vi"> 
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang web với JavaScript</title>
+  <style>
+    body {
+      transition: background-color 0.5s ease;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ulis</title>
-  </head> 
+    #clock {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
 
-  <body>
-    <h1>Khóa học Information Technology</h1>
-    <p>Để bắt đầu với Ulis tốt hơn</p>
-    <a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Khóa học Python</a>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwKimVxFav_t2bYEpxbn_D0hFgkp2EhoNa6Q&s" style="width: 1200px; height: 700px ;">
-  </body> 
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #007BFF;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
 
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chào mừng đến với trang web của bạn!</h1>
+  <button onclick="changeBackground()">Đổi màu nền</button>
+  <p id="clock"></p>
+
+  <script>
+    const colors = ["lightblue", "lightgreen", "lightpink", "lightyellow", "lavender"];
+    let currentColor = "";
+
+    function changeBackground() {
+      const availableColors = colors.filter(color => color !== currentColor);
+      const newColor = availableColors[Math.floor(Math.random() * availableColors.length)];
+      document.body.style.backgroundColor = newColor;
+      currentColor = newColor;
+    }
+
+    setInterval(() => {
+      const now = new Date();
+      document.getElementById("clock").innerText = now.toLocaleString();
+    }, 1000);
+  </script>
+
+</body>
 </html>
